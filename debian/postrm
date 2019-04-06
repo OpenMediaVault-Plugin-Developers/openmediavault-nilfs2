@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -e
+
+. /etc/default/openmediavault
+. /usr/share/openmediavault/scripts/helper-functions
+
+remove_action() {
+    # remove nilfs2 module file
+    if [ -f /etc/modules-load.d/nilfs2.conf ]; then
+        rm /etc/modules-load.d/nilfs2.conf
+    fi
+
+    # Activate trigger to purge cached files.
+    dpkg-trigger update-fixperms
+}
+
+case "$1" in
+	purge)
+		remove_action
+	;;
+
+	remove)
+		remove_action
+	;;
+
+	upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+	;;
+
+	*)
+		echo "postrm called with unknown argument '$1'" >&2
+		exit 1
+	;;
+esac
+
+exit 0

@@ -1,0 +1,14 @@
+Source: openmediavault-nilfs2
+Section: net
+Priority: optional
+Maintainer: OpenMediaVault Plugin Developers <plugins@omv-extras.org>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.6
+XB-Plugin-Section: filesystems
+
+Package: openmediavault-nilfs2
+Architecture: all
+Depends: nilfs-tools,
+         openmediavault (>=4.1.21),
+         ${misc:Depends}
+Description: nilfs2 plugin for OpenMediaVault
