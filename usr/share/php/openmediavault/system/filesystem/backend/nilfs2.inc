@@ -22,8 +22,7 @@ namespace OMV\System\Filesystem\Backend;
 class Nilfs2 extends BackendAbstract {
 	public function __construct() {
 		$this->type = "nilfs2";
-		$this->properties = self::PROP_MNTENT | self::PROP_POSIX_ACL |
-		  self::PROP_DISCARD | self::PROP_QUOTA | self::PROP_RESIZE;
+		$this->properties = self::PROP_MNTENT | self::PROP_DISCARD | self::PROP_RESIZE;
                 $this->mntOptions = [ "defaults", "nofail" ];
 	}
 
